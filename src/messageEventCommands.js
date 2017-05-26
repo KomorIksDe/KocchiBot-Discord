@@ -198,6 +198,57 @@ exports.eball = function(args, msg) {
     }
 }
 
+exports.role = function(args, msg) {
+    var Role = require("./roleCommands.js");
+    
+    if(args.length === 1) {
+        msg.channel.sendMessage("Invalid usage of command! Use /? for info of how to use it.");
+    }
+    else if(args[1] === "/?") {
+        Role.helpOption(prefix, msg);
+    }
+    else {
+        switch(args[2]) {
+            case "create":
+                Role.createOption(args[1].toLowerCase(), msg);
+                break;
+            case "delete":
+                Role.deleteOption(args[1].toLowerCase(), msg);
+                break;
+            case "setcolor":
+                Role.setColorOption([args[1].toLowerCase(), args[3]], msg);
+                break;
+            case "setname":
+                Role.setNameOption([args[1].toLowerCase(), args[3].toLowerCase()], msg);
+                break;
+            case "visible":
+                Role.setVisibleOption(args[1].toLowerCase(), msg);
+                break;
+            case "add":
+                Role.addOption(args[1].toLowerCase(), msg);
+                break;
+            case "remove":
+                Role.removeOption(args[1].toLowerCase(), msg);
+                break;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

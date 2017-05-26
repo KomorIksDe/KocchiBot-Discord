@@ -44,9 +44,13 @@ Bot.on('message', message => {
     else if(Message.isCommand("8ball", message)) {
         Message.eball(args, message);
     }
+    else if(Message.isCommand("role", message)) {
+        Message.role(args, message);
+    }
 })
 
 Bot.on('guildMemberAdd', member => {
+    console.log("1");
     Guild.greetNewMember(member, Config.prefix);
 })
 
