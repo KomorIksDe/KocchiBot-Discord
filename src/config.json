@@ -1,4 +1,5 @@
 {
-	"prefix": "&",
-	"token": "xD"
+	"prefix": "your-prefix",
+	"token": "bots-token",
+	"adminid": "admis-id"
 }

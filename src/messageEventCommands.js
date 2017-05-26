@@ -10,7 +10,7 @@ exports.isCommand = function(str, msg) {
 
 exports.sayCommand = function(args, msg) {
     if(args.length === 1) {
-         msg.channel.sendMessage("Invalid usage of command! Correct usage: !say `[text to display]`");
+         msg.channel.sendMessage("Invalid usage of command! Use /? for info of how to use it.");
      }
      else {
          if(args[1] === "/?") {
@@ -118,17 +118,85 @@ exports.lolskill = function(args, msg) {
     }
 }
 
+exports.hentai = function(args, msg) {
+    if(args.length > 1) {
+        if(args[1] === "/?")
+            msg.channel.sendMessage("Usage of " + prefix + "hentai: \r\n\n`" + prefix + "hentai` \r\nReturns random hentai image");
+    }
+    else {
+        var path = 'D:\\KocchiBot\\imgs';
+        
+        switch(Math.floor(Math.random() * 5) + 1) {
+            case 1:
+                path += "\\kanna1.png";
+                break;
+            case 2:
+                path += "\\houtarou1.png";
+                break;
+            case 3:
+                path += "\\emilia1.png";
+                break;
+            case 4:
+                path += "\\felix1.png";
+                break;
+            case 5:
+                path += "\\seba.png";
+                break;
+        }
+        
+        msg.channel.sendMessage(" ", {
+            file: path
+        });
+    }
+}
 
+exports.gbay99 = function(args, msg) {
+    if(args.length > 1) {
+        if(args[1] === "/?")
+            msg.channel.sendMessage("Usage of " + prefix + "gbay99: \r\n\n`" + prefix + "gbay99` \r\nReturns daily gbay99");
+    }
+    else {
+        var path = 'D:\\KocchiBot\\imgs';
+        
+        switch(Math.floor(Math.random() * 4) + 1) {
+            case 1:
+                path += "\\gbay91.png";
+                break;
+            case 2:
+                path += "\\gbay92.png";
+                break;
+            case 3:
+                path += "\\gbay93.png";
+                break;
+            case 4:
+                path += "\\gbay94.png";
+                break;
+        }
+        
+        msg.channel.sendMessage(" ", {
+            file: path
+        });
+    }
+}
 
-
-
-
-
-
-
-
-
-
+exports.eball = function(args, msg) {
+    if(args.length === 1) {
+        msg.channel.sendMessage("You could've asked me something at least...");
+    }
+    else if(args[1] === "/?") {
+        msg.channel.sendMessage("Usage of " + prefix + "8ball: \r\n\n`" + prefix + "8ball` \r\nReturns an answer to your question");
+    }
+    else {
+        var answers = [
+            "Yes",
+            "No",
+            "Maybe",
+            "xdddDXdxddd"
+        ];
+        
+        msg.channel.sendMessage(answers[Math.floor(Math.random() * answers.length)]);
+    }
+}
 
 
 
