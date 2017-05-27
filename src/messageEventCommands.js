@@ -234,7 +234,27 @@ exports.role = function(args, msg) {
     }
 }
 
+exports.changeOwner = function(args, msg) {
+    if(args.length === 1) {
+        msg.channel.sendMessage("Invalid usage of command! Use /? for info of how to use it.");
+    }
+    else if(args[1] === "/?") {
+        msg.channel.sendMessage("Usage of " + prefix + "setowner: \r\n\n`" + prefix + "setowner [new owner]` \r\nChanges my owner");
+    }
+    else {
+        let newOwner = msg.guild.member(msg.mentions.users.first());
+        
+        if(!newOwner)
+            msg.channel.sendMessage("There's no such a member");
+        else {
+            var jFile = JSON.parse(fs.readFileSync("config.json").toString());
 
+            jFile.adminid = newOwner.id;
+            fs.writeFile("config.json", JSON.stringify(jFile));
+            msg.channel.sendMessage("My owner has been changed.");
+        }
+    }
+}
 
 
 

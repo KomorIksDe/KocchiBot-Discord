@@ -21,13 +21,13 @@ Bot.on('message', message => {
         Message.helpCommand(args, message);
     }
     else if(Message.isCommand("say", message)) {
-        if(message.author.id !== Config.adminid)
-            message.channel.sendMessage("Only my creator can use this command.")
-        else
-            Message.sayCommand(args, message);
+        Message.sayCommand(args, message);
     }
     else if(Message.isCommand("prefix", message)) {
-        Message.changePrefix(args, message);
+        if(Budds.isAdmin(message))
+            Message.changePrefix(args, message);
+        else
+            message.channel.sendMessage("Only my owner can use this command.");
     }
     else if(Message.isCommand("opgg", message)) {
         Message.opgg(args, message);
@@ -45,7 +45,16 @@ Bot.on('message', message => {
         Message.eball(args, message);
     }
     else if(Message.isCommand("role", message)) {
-        Message.role(args, message);
+        if(Budds.isAdmin(message))
+            Message.role(args, message);
+        else
+            message.channel.sendMessage("Only my owner can use this command.");
+    }
+    else if(Message.isCommand("setowner", message)) {
+        if(Budds.isAdmin(message))
+            Message.changeOwner(args, message);
+        else
+            message.channel.sendMessage("Only my owner can use this command.");
     }
 })
 
